@@ -20,14 +20,15 @@
         </v-layout>
         <v-layout>
             <v-carousel
-                    delimiter-icon="stop"
-                    prev-icon="mdi-arrow-left"
-                    next-icon="mdi-arrow-right"
+                prev-icon="arrow_back_ios"
+                next-icon="arrow_forward_ios"
             >
                 <v-carousel-item
-                        v-for="meetup in meetups"
-                        :key="meetup.id"
-                        :src="meetup.src"
+                    v-for="meetup in meetups"
+                    :key="meetup.id"
+                    :src="meetup.src"
+                    @click="onLoadMeetUp(meetup.id)"
+                    style="cursor: pointer"
                 >
                     <div class="carousel-title">{{ meetup.title}}</div>
                 </v-carousel-item>
@@ -48,21 +49,26 @@
                         src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
                     },
                     {
-                        id:1,
+                        id:2,
                         title:'Meetup In Bosundora',
                         src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
                     },
                     {
-                        id:1,
+                        id:3,
                         title:'Meetup In Mirpur-12',
                         src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
                     },
                     {
-                        id:1,
+                        id:4,
                         title:'Meetup In Gazipur',
                         src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
                     }
                 ]
+            }
+        },
+        methods:{
+            onLoadMeetUp (id){
+                this.$router.push('/meetup/'+id)
             }
         }
     }

@@ -8,7 +8,7 @@
             <v-list class="pa-1">
                 <v-list-tile avatar>
                     <v-list-tile-avatar>
-                        <img src="https://randomuser.me/api/portraits/men/85.jpg">
+                        <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png">
                     </v-list-tile-avatar>
 
                     <v-list-tile-content>
@@ -44,6 +44,9 @@
             ></v-toolbar-side-icon>
 
             <v-toolbar-title class="white--text">
+                <v-list-tile-avatar>
+                    <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png">
+                </v-list-tile-avatar>
                 <router-link to="/" tag="span" style="cursor: pointer">
                     Vue js MeetUp App
                 </router-link>

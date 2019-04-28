@@ -5,6 +5,7 @@ Vue.use(VueRouter)
 import Home from '../components/Home'
 import MeetUps from '../components/MeetUp/Meetups'
 import CreateMeetUp from '../components/MeetUp/CreateMeetUp'
+import MeetUp from '../components/MeetUp/SingleMeetUp'
 import Profile from "../components/User/Profile";
 import SignUp from "../components/User/SignUp";
 import SignIn from "../components/User/SignIn";
@@ -23,6 +24,11 @@ const routes = [
         path:'/create-meetUps',
         name:'CreateMeetUps',
         component:CreateMeetUp
+    },
+    {
+      path:'/meetup/:id',
+      name:'MeetUp',
+      component:MeetUp
     },
     {
         path:'/profile',
