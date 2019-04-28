@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
         <v-navigation-drawer
                 v-model="drawer"
                 absolute
@@ -23,7 +23,6 @@
                 <v-list-tile
                     v-for="(item, index) in menuItems"
                     :key="index"
-                    router
                     :to="item.url"
                 >
 
@@ -57,7 +56,6 @@
                     flat
                     v-for="(item, index) in menuItems"
                     :key="index"
-                    router
                     :to="item.url"
                 >
                     <v-icon left>{{ item.icon}}</v-icon>
