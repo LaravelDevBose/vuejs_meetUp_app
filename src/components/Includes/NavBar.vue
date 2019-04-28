@@ -20,7 +20,13 @@
             <v-list class="pt-0" dense>
                 <v-divider></v-divider>
 
-                <v-list-tile v-for="(item, index) in menuItems" :key="index">
+                <v-list-tile
+                    v-for="(item, index) in menuItems"
+                    :key="index"
+                    router
+                    :to="item.url"
+                >
+
                     <v-list-tile-action>
                         <v-icon>{{ item.icon}}</v-icon>
                     </v-list-tile-action>
@@ -28,6 +34,7 @@
                     <v-list-tile-content>
                         <v-list-tile-title>{{ item.title}}</v-list-tile-title>
                     </v-list-tile-content>
+
                 </v-list-tile>
             </v-list>
         </v-navigation-drawer>
@@ -37,13 +44,25 @@
                     class="hidden-sm-and-up"
             ></v-toolbar-side-icon>
 
-            <v-toolbar-title class="white--text">Vue js MeetUp App</v-toolbar-title>
+            <v-toolbar-title class="white--text">
+                <router-link to="/" tag="span" style="cursor: pointer">
+                    Vue js MeetUp App
+                </router-link>
+
+            </v-toolbar-title>
 
             <v-spacer></v-spacer>
             <v-toolbar-items class="hidden-xs-only">
-                <v-btn flat v-for="(item, index) in menuItems" :key="index">
+                <v-btn
+                    flat
+                    v-for="(item, index) in menuItems"
+                    :key="index"
+                    router
+                    :to="item.url"
+                >
                     <v-icon left>{{ item.icon}}</v-icon>
                     {{ item.title }}
+
                 </v-btn>
             </v-toolbar-items>
         </v-toolbar>
@@ -58,11 +77,11 @@
             return{
                 drawer: false,
                 menuItems:[
-                    {icon:'group', title:'View MeetUps'},
-                    {icon:'room', title:'Organize MeetUp'},
-                    {icon:'person', title:'Profile'},
-                    {icon:'face', title:'Sign Up'},
-                    {icon:'lock_open', title:'Sign In'},
+                    {icon:'group', title:'View MeetUps', url:'/meetups'},
+                    {icon:'room', title:'Organize MeetUp', url:'/create-meetUps'},
+                    {icon:'person', title:'Profile', url:'/profile'},
+                    {icon:'face', title:'Sign Up', url:'/sign-up'},
+                    {icon:'lock_open', title:'Sign In', url:'/sign-in'},
                 ]
             }
         }
