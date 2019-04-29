@@ -24,9 +24,9 @@
                 next-icon="arrow_forward_ios"
             >
                 <v-carousel-item
-                    v-for="meetup in meetups"
+                    v-for="meetup in featureMeetUps"
                     :key="meetup.id"
-                    :src="meetup.src"
+                    :src="meetup.image_path"
                     @click="onLoadMeetUp(meetup.id)"
                     style="cursor: pointer"
                 >
@@ -38,38 +38,25 @@
 </template>
 
 <script>
+    import {mapActions, mapGetters} from 'vuex'
     export default {
         name: "Home",
         data(){
             return{
-                meetups: [
-                    {
-                        id:1,
-                        title:'Meetup In Dhaka',
-                        src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
-                    },
-                    {
-                        id:2,
-                        title:'Meetup In Bosundora',
-                        src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
-                    },
-                    {
-                        id:3,
-                        title:'Meetup In Mirpur-12',
-                        src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
-                    },
-                    {
-                        id:4,
-                        title:'Meetup In Gazipur',
-                        src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
-                    }
-                ]
             }
         },
         methods:{
+            ...mapActions([
+
+            ]),
             onLoadMeetUp (id){
                 this.$router.push('/meetup/'+id)
             }
+        },
+        computed:{
+            ...mapGetters([
+                'featureMeetUps'
+            ]),
         }
     }
 </script>

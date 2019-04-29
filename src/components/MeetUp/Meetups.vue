@@ -1,27 +1,27 @@
 <template>
     <v-container>
-        <v-layout row warp>
-            <v-flex sm8 offset-sm2>
-                <v-card class="info" dark hover tag="div">
+        <v-layout row warp v-for="meetup in allMeetUps" :key="meetup.id" class="mb-2">
+            <v-flex sm8 offset-sm2 >
+                <v-card class="info" dark hover tag="div" >
                     <v-container fluid>
                         <v-layout row>
                             <v-flex xs5 sm4 md3 class="d-sm-block">
                                 <v-img
-                                    src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
-                                    aspect-ratio="1.7"
+                                    :src="meetup.image_path"
+                                    aspect-ratio="2"
 
                                 ></v-img>
                             </v-flex>
                             <v-flex xs7 sm8>
                                 <v-card-title>
                                     <div >
-                                        <h5 class="headline mb-0" >Kangaroo Valley Safari</h5>
-                                        <div>17 july 2019</div>
+                                        <h5 class="headline mb-0" >{{ meetup.title }}</h5>
+                                        <div>{{ meetup.date }}</div>
                                         <v-card-actions >
 
                                             <v-btn
                                                 class="teal accent-4"
-                                                to="/meetup/1"
+                                                :to="'/meetup/' + meetup.id"
                                             >
                                                 <v-icon left>visibility</v-icon>
                                                 View MeetUp
@@ -40,8 +40,16 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
+
     export default {
-        name: "Meetups"
+        name: "Meetups",
+
+        computed:{
+            ...mapGetters([
+                'allMeetUps'
+            ])
+        }
     }
 </script>
 

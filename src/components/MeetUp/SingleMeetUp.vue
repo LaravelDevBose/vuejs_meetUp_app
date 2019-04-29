@@ -4,19 +4,19 @@
             <v-flex xs12>
                 <v-card>
                     <v-card-title>
-                        <h5 class="headline primary--text">Single MeetUp</h5>
+                        <h5 class="headline primary--text">{{ meetup.title }}</h5>
                     </v-card-title>
                     <v-img
-                        src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
+                        :src="meetup.image_path"
                         aspect-ratio="1.4"
                         max-height="400"
                     ></v-img>
                     <v-card-text>
                         <div class="subheading info--text mb-1">
                             <v-icon class="deep-orange--text">access_alarm</v-icon>
-                            17 july 2019 - Where it take place</div>
+                            {{ meetup.date }} - Where it take place</div>
                         <div>
-                            Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.
+                            {{ meetup.description }}
                         </div>
                     </v-card-text>
                     <v-card-actions>
@@ -34,7 +34,13 @@
 
 <script>
     export default {
-        name: "SingleMeetUp"
+        props:['id'],
+        name: "SingleMeetUp",
+        computed:{
+            meetup () {
+                return this.$store.getters.getMeetUpById(this.id)
+            }
+        }
     }
 </script>
 
